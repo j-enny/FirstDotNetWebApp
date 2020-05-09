@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Enter the two numbers below.</p>
+</div>
+
+
+@{
+    if(ViewBag.Result1 != null && ViewBag.Result2 != null)
+    {
+        if( ViewBag.negativenum == true)
+        {
+            <p style=color:red> Negative numbers are not allowed!!!</p>
+        }
+
+        else if ( ViewBag.Result1 > ViewBag.result2)
+        {
+            <div>
+                <h4> The number @ViewBag.num1 has a higher square root than number @ViewBag.num2 with square root: @ViewBag.Result1</h4>
+                    
+            </div>
+        }
+        
+        else if( ViewBag.Result1 == ViewBag.Result2)
+        {
+            <div>
+                <h4> The two numbers you provided have the same square roots. Enter different numbers </h4>
+            </div>
+        }
+
+        else
+        {
+            <div>
+                <h4> The number @ViewBag.num2 has a higher square root than number @ViewBag.num1 with square root: @ViewBag.Result2</h4>
+            </div>
+        }
+    }
+}
+    
+<div>
+
+    <form asp-controller = "Home" asp-action="Index" method="POST">
+        <input type="number" placeholder="First Number" name="firstNumber" required/>
+        <input type="number" placeholder="Second Number" name="secondNumber" required/>
+        <button type="submit" > Submit</button>
+        
+    </form>
+</div>
